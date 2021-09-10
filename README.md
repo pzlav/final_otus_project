@@ -4,9 +4,11 @@ Pipeline:
 GraphQL -> Kafka -> Spark structured streaming -> MLSpark job -> HDFS
 
 # How to Install:
-   + pip3 install pyyaml
-   + pip3 install kafka-python
-
+    ### Install python library
+           + pip3 install pyyaml
+           + pip3 install kafka-python
+    ### Create topic in kafka …/kafka/bin
+           + kafka-topics.bat --create --zookeeper ~~localhost:2181~~ --replication-factor 1 --partitions 1 --topic blocks
 
 
 ## Blockchain info
