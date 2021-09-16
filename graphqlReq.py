@@ -4,7 +4,7 @@ import requests
 import json
 import yaml
 from kafka import KafkaProducer
-
+from time import sleep
 
 # Reading configuration file
 # ======================================================================================================
@@ -38,14 +38,24 @@ query{
 # =======================================================================================================
 
 
-result = run_query(query)  # Execute the query
-print(f"Result - {result}")
-mjson = json.loads(f"{result}".replace("\'", "\""))
-print(mjson['data']['bitcoin']['blocks'][0]['count'])
-
-
 # Send message to Kafka producer
-# ======================================================================================================
+# =======================================================================================================
 producer = KafkaProducer(bootstrap_servers=[configuration['KAFKA_BOOTSTRAP']],
                          value_serializer=lambda x: 
                          json.dumps(x).encode('utf-8'))
+
+
+
+for e in range(50):
+    result = run_query(query)  # Execute the query
+    print(f"Result - {result}")
+    mjson = json.loads(f"{result}".replace("\'", "\""))
+    data = {"blocks_count": mjson['data']['bitcoin']['blocks'][0]['count']}
+    print(e)
+    print(type(data))
+    print(data)
+    print(json.dumps(data).encode('utf-8'))
+    producer.send("blocks", value=data)
+    sleep(11)
+
+# ======================================================================================================env.execute()

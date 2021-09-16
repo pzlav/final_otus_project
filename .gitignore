@@ -3,6 +3,7 @@
 *.yaml
 *.yml
 *.save
+.b/
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Scala template
