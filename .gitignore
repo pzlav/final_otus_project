@@ -4,6 +4,10 @@
 *.yml
 *.save
 .b/
+b/
+*.odp
+*.ppt
+*.pptx
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Scala template
