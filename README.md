@@ -1,7 +1,7 @@
-A simple project that get information from blockchain and proceed it to HDFS via Kafka and Flink
+A simple project that get information from Etherium blockchain and proceed it to Hive via Kafka and Flink
 
 Pipeline:
-GraphQL -> Kafka -> Flink (Table API) -> ~~HDFS~~FileSystem -> HiveQL
+Etherium node (Infura) -> Kafka -> Flink (Table API) -> ~~HDFS~~ FileSystem -> HiveQL (planning)
 
 # How to Install:
 ### Install Python library
@@ -9,15 +9,15 @@ pip3 install pyyaml
 pip3 install kafka-python
 pip3 install apache-flink
 sudo apt install python-is-python3
-### Create topic in kafka …/kafka/bin
-kafka-topics.bat --create --zookeeper ~~localhost:2181~~ --replication-factor 1 --partitions 1 --topic blocks
 
+### Run Kafka and Flink
+See details in kafka-start.sh
 
-## Blockchain info
-Bitcoin
+### Prepare configuration file project.yaml
+CURRRENT_BLOCK_NUBER: XXXXXXX
+INFURA_API_KEY: XXXXXXXXXXXXXXXXXXXXXXXXXX
+KAFKA_BOOTSTRAP: localhost:9092
 
-## Kafka
+# QA
+Yes, I'm planning to make Docker image for this project
 
-## Spark structured streaming
-
-## ML spark
